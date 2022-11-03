@@ -153,12 +153,44 @@ function getMensajes() {
         .then(res => res.json())
         .then(posts => {
             console.log(posts);
-            posts.forEach(post => {
-                crearMensajeHTML(post.mensaje, post.user);
-            });
+            posts.forEach(post =>
+                crearMensajeHTML(post.mensaje, post.user));
 
 
         });
+
+
 }
 
 getMensajes();
+
+
+
+// Detectar cambios de conexión
+function isOnline() {
+
+    if (navigator.onLine) {
+        // tenemos conexión
+        // console.log('online');
+        $.mdtoast('Online', {
+            interaction: true,
+            interactionTimeout: 1000,
+            actionText: 'OK!'
+        });
+
+
+    } else {
+        // No tenemos conexión
+        $.mdtoast('Offline', {
+            interaction: true,
+            actionText: 'OK',
+            type: 'warning'
+        });
+    }
+
+}
+
+window.addEventListener('online', isOnline);
+window.addEventListener('offline', isOnline);
+
+isOnline();
