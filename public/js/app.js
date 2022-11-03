@@ -119,12 +119,29 @@ nuevoBtn.on('click', function() {
 
 // Boton de enviar mensaje
 postBtn.on('click', function() {
-
     var mensaje = txtMensaje.val();
     if (mensaje.length === 0) {
         cancelarBtn.click();
         return;
     }
+
+
+    var data = {
+        mensaje: mensaje,
+        user: usuario
+    };
+
+
+    fetch('api', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(res => console.log('app.js', res))
+        .catch(err => console.log('app.json error: ', err));
 
     crearMensajeHTML(mensaje, usuario);
 
