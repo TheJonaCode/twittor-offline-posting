@@ -115,7 +115,8 @@ self.addEventListener('sync', e => {
 
     if (e.tag === 'nuevo-post') {
         // postear a BD cuando hay conexion
-        // e.waitUntil( );
+        const respuesta = postearMensajes();
+        e.waitUntil(respuesta);
     }
 
 });
