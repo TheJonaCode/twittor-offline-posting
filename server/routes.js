@@ -3,14 +3,22 @@ var express = require('express');
 var router = express.Router();
 
 
+const mensajes = [{
 
+    _id: 'XXX',
+    user: 'spiderman',
+    mensaje: 'Hello World'
+
+
+}, ];
 
 
 
 
 // Get mensajes
-router.get('/', function (req, res) {
-  res.json('Obteniendo mensajes');
+router.get('/', function(req, res) {
+    // res.json('Obteniendo mensajes');
+    res.json(mensajes);
 });
 
 
